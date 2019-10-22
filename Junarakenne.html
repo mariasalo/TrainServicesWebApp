@@ -10,28 +10,23 @@
 <body>
     <h1>Juna-aikataulut</h1>
 
-    <p>Mistä: <input type="text" id="lahtopaikka" /></p>
-    <p> Minne: <input type="text" id="saapumispaikka" /></p>
-    <p>Lähtöaika: <input type="datetime-local" id="lahtoaika" /> Saapumisaika: <input type="datetime-local" id="saapumisaika" /> </p>
-    <p><input type="button" value="Hae matkaa" id="hae" /></p>
+    Mistä:
+    <select name="lahtopaikka" id="lahtopaikka">
+        <option value="A">Helsinki</option>
+    </select>
+
+    Minne:
+    <select name="saapumispaikka" id="saapumispaikka">
+        <option value="A">Tampere</option>
+    </select>
+
+    <p>Lähtöaika: <input type="date" id="lahtoaika" /> Saapumisaika: <input type="date" id="saapumisaika" /> </p>
+    <p><input type="button" value="Hae matkaa" id="hae" onclick="haedata()" /></p>
+
 
     <h3>Tiedot</h3>
     <table id="tiedot">
-        <tr>
-            <th>Junan nimi</th>
-            <th>Junan numero</th>
-            <th>Lähtöasema</th>
-            <th>Lähtöaika</th>
-            <th>Pääteasema</th>
-            <th>Saapumisaika</th>
-
-        </tr>
-        <tr><td>Pendolino</td><td> IC342</td><td> Helsinki</td><td>13.45</td><td> Kouvola</td><td> 15.55</td></tr>
-        <tr><td>Pendolino</td><td> IC342</td><td> Helsinki</td><td>13.45</td><td> Kouvola</td><td> 15.55</td></tr>
-        <tr><td>Pendolino</td><td> IC342</td><td> Helsinki</td><td>13.45</td><td> Kouvola</td><td> 15.55</td></tr>
-
     </table>
-
 
 
 </body>
