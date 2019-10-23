@@ -7,7 +7,8 @@
     <link href="junastyle.css" rel="stylesheet" />
     <title>Juna-aikataulut</title>
 </head>
-<body>
+<body onload="init()">
+
     <h1>Juna-aikataulut</h1>
 
     Mistä:
@@ -19,16 +20,27 @@
     <select name="saapumispaikka" id="saapumispaikka">
         <option value="A">Tampere</option>
     </select>
+    <p><input type="button" value="Hae kaikki aikataulut" id="hae" onclick="haedata()" /> </p>
 
+<<<<<<< HEAD
 
     <p>Lähtöaika: <input type="date" id="lahtoaika" /> Saapumisaika: <input type="date" id="saapumisaika" /> </p>
     <p><input type="button" value="Hae matkaa" id="hae" onclick="haedata()" /></p>
+=======
+    <p>
+        Lähtöaika: <input type="datetime-local" id="aika" />
+    </p>
+>>>>>>> 239a479a6aa7dabc5cff3380aee778e50b32692f
 
+    <p><input type="button" value="Hae aikataulut ajan mukaan" id="hae" onclick="haeLahtoAika()" /> </p>
 
     <h3>Tiedot</h3>
     <table id="tiedot">
     </table>
 
 
+
+    <!--<input type="radio" name="aika" value="A">Lähtöaika
+        <input type="radio" name="aika" value="B" />Saapumisaika<br />-->
 </body>
 </html>
