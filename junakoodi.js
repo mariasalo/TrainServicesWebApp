@@ -44,11 +44,11 @@ function getSaapumisaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
-<<<<<<< HEAD
+ HEAD
 
 
-=======
->>>>>>> 239a479a6aa7dabc5cff3380aee778e50b32692f
+
+//239a479a6aa7dabc5cff3380aee778e50b32692f
 //järjestää haetun datan:
 function haettu(data) {
     console.dir(data);
@@ -75,13 +75,13 @@ function haedata() {
 
 
 
-<<<<<<< HEAD
+HEAD
 function tallenna(data) {
     localStorage.setItem("junatiedot", JSON.stringify(data));
 
 }
 
-=======
+
 //HYLÄTYT VERSIOT:
 
 //HAKUA AJAN PERUSTEELLA, LÄHTÖ JA SAAPUMISAIKA
@@ -123,4 +123,4 @@ function tallenna(data) {
 //    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
 //    $.getJSON(url, haettu)
 //}
->>>>>>> 239a479a6aa7dabc5cff3380aee778e50b32692f
+//239a479a6aa7dabc5cff3380aee778e50b32692f
