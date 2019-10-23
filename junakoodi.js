@@ -33,9 +33,11 @@ function getSaapumisaika(timeTableRows, asema) {
 }
 
 
+
 //järjestää haetun datan:
 function haettu(data) {
     console.dir(data);
+    tallenna(data);
     let rivit = "";
     var otsikko = "<table><th>Lähtöaika</th><th>Saapumisaika</th><th>Junan tiedot</th></table>";
 
@@ -47,6 +49,7 @@ function haettu(data) {
         rivit += `<table><tr><td>${lahtoaika}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td></tr></table>`;
     }
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
+    
 }
 
 //hakee datan:
@@ -54,3 +57,12 @@ function haedata() {
     $.getJSON("https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE", haettu)
     console.log("getJSON-metodia kutsuttu")
 }
+
+
+
+
+function tallenna(data) {
+    localStorage.setItem("junatiedot", JSON.stringify(data));
+
+}
+
