@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿//var urlalku = "https:/ / rata.digitraffic.fi / api / v1";
-//var urlloppu = "/live-trains/station/HKI/TPE";
-=======
-﻿var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
+var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
 var urllahtopaikka = "";
 var urlsaapumispaikka = "";
 var urlloppu = "";
@@ -10,25 +6,11 @@ var lahtokaupunki = "";
 var tulokaupunki = "";
 var valittupaatekaupunki = "";
 
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
 
 //määritellään ajan esitysmuoto
 var nyt = new Date();
 var asemat = [];
 
-<<<<<<< HEAD
-    //var lahtopaikka;
-    //var saapumispaikka;
-    //var tiedot_teksti;
-    //var hae;
-
-
-
-    
-
-=======
-//Ajan default arvon lisääminen:
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
 Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
@@ -109,8 +91,6 @@ function getSaapumisaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
-<<<<<<< HEAD
-=======
 //haetaan junan lähtöaika asemalta
 function getLahtoaika(timeTableRows, asema) {
     var sr = timeTableRows.find(function (tr) {
@@ -130,10 +110,6 @@ function haeAsemienTiedot() {
 }
 haeAsemienTiedot();
 
-<<<<<<< HEAD
-
-//järjestää haetun datan:
-=======
 //Hakee yksittäisen aseman shortcoden ja kiinnittää sen arvon asemanlyhenne-parametriin. Funktio palauttaa asemanlyhennettä vastaavan aseman nimen.
 function haeAsemanTiedot(asemanlyhenne) {
     var asema = asemat.find(function (asema) {
@@ -143,7 +119,7 @@ function haeAsemanTiedot(asemanlyhenne) {
 }
 
 //järjestää haetun datan halutulla tavalla:
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
+
 function haettu(data) {
     console.dir(data);
     tallenna(data);
@@ -152,12 +128,11 @@ function haettu(data) {
 
     for (let juna of data) {
 
-<<<<<<< HEAD
         var lahtoaika = new Date(juna.timeTableRows[0].scheduledTime).toLocaleTimeString("fi", optiot);
         var saapumisaika = new Date(getSaapumisaika(juna.timeTableRows, "TPE")).toLocaleTimeString("fi", optiot);
 
         rivit += `<table><tr><td>${lahtoaika}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td></tr></table>`;
-=======
+
         //var lahtoaika = new Date(juna.timeTableRows[0].scheduledTime).toLocaleTimeString("fi", optiot);
         var lahtoaika = new Date(getLahtoaika(juna.timeTableRows, urllahtopaikka)).toLocaleTimeString("fi", optiot);
         var saapumisaika = new Date(getSaapumisaika(juna.timeTableRows, urlsaapumispaikka)).toLocaleTimeString("fi", optiot);
@@ -185,7 +160,7 @@ function haettu(data) {
         }
     
         rivit += `<table><tr><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td></tr></table><table><tr><td>Väliasemat:</td><td colspan="4">${valiasemat}</td></tr></table>`;
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
+
     }
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
 
@@ -197,22 +172,12 @@ function haedata() {
     $.getJSON(url, haettu)
 }
 
-<<<<<<< HEAD
 
-
-
-
-=======
 //Tallentaa haun tiedot localStorageen
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
 function tallenna(data) {
     localStorage.setItem("junatiedot", JSON.stringify(data));
 
 }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 
 
 function tallenna(data) {
@@ -222,9 +187,6 @@ function tallenna(data) {
     
 }
 
-//  
-=======
-=======
 //sijaintihommat VAROVASTI
 
 var x = document.getElementById("demo");
@@ -242,9 +204,7 @@ function showPosition(position) {
         "<br>Longitude: " + position.coords.longitude;
 }
 
-=======
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
->>>>>>> f97821dcbbd03686e5c4b82a969c9f008f937d4e
+
 //HYLÄTYT VERSIOT:
 
 //HAKUA AJAN PERUSTEELLA, LÄHTÖ JA SAAPUMISAIKA
@@ -286,12 +246,8 @@ function showPosition(position) {
 //    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
 //    $.getJSON(url, haettu)
 //}
-<<<<<<< HEAD
-//239a479a6aa7dabc5cff3380aee778e50b32692f
-=======
 
 //Date.prototype.addDate = function (d) {
 //    this.setDate(this.getDate() + (d));
 //    return this;
 //}
->>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
