@@ -1,62 +1,92 @@
 ﻿<html>
 
 <head>
+    <link href="Junatweb.css" rel="stylesheet" />
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-    <title></title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
     <script src="junakoodi.js"></script>
     <style>
         h1 {
             background-image: url("https://d1p2xdir0176pq.cloudfront.net/wp-content/uploads/alpha-trains-750x450.jpg")
         }
+
+
+        h2 {
+            background-image: url("https://d1p2xdir0176pq.cloudfront.net/wp-content/uploads/alpha-trains-750x450.jpg")
+        }
+
+
+        bg-image {
+        }
     </style>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
 
-    <!--<div class="panel text centre">-->
-    <h1> Junfo</h1>
-    <h2> Sign In</h2>
+                                <h3 class="login-heading mb-4">
+                                <img src="../img/logoblack.png" /></h3>
+
+                                <form>
+                                    <div class="form-label-group">
+                                        <input id="un" type="text" class="form-control" placeholder="Username" required autofocus>
+
+                                        <label for="UserName">Käyttäjätunnus</label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <input id="pass" type="password" class="form-control" placeholder="Password" required>
+                                        <label for="inputPassword">Salasana</label>
+                                    </div>
+                                    <div id="msg" type="text-box" align="left" placeholder="Message">
+                                    </div>
 
 
-    <div class="main">
-        <input id="un" type="text" align="left" placeholder="Username">
-        <input id="pass" type="password" align="left" placeholder="Password">
-        <br />
-
-        <div id="msg" type="text-box" align="left" placeholder="Message">
-
-            <br />
-            <input type="button" id="signinbtn" value="SignIn" />
-
-            <br />
 
 
-            <input type="button" id="historia" value="View Browsing History" />
-            <div id="historialista">
-                <table class="table table-stripped" id="train-info">
+                                    <button class="btn btn-lg btn-primary" id="signinbtn" type="button">Kirjaudu</button>
 
-                    <thead>
-                        <tr>
-                            <th>Train Number</th>
-                            <th>Departure Date</th>
-                            <th>Train Type</th>
-                            <th>Scheduled Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tdata">
-                    </tbody>
-                </table>
-
+                                </form>
+                                <p> <button class="btn btn-lg btn-primary " id="historia" type="submit">Näytä hakuhistoria</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
+
+    <div id="historialista">
+        <table class="table table-stripped" id="train-info">
+
+            <thead>
+                <tr>
+                    <th>Junan numero</th>
+                    <th>Lähtöaika</th>
+                    <th>Juna(t)</th>
+                </tr>
+            </thead>
+            <tbody id="tdata">
+            </tbody>
+        </table>
+
+    </div>
+
     <script>
         let txtuser = document.getElementById("un");
         let txtpass = document.getElementById("pass");
@@ -65,9 +95,9 @@
         let user;
         let pass;
         if (window.localStorage) {
-            localStorage.setItem("user", "daily")
-            localStorage.setItem("pass", "@123")
-            user = localStorage.getItem("user");
+            localStorage.setItem("un", "juna")
+            localStorage.setItem("pass", "123")
+            user = localStorage.getItem("un");
             pass = localStorage.getItem("pass");
         }
         submit.addEventListener("click", () => {
@@ -80,21 +110,22 @@
             }
         });
         function myFunction() {
+            console.log("myF");
             setInterval(function () { alert("Loading Junfo sivu..."); }, 2000);
-            window.location.href = 'http://localhost:49883/Junarakenne.html'
+            window.location.href = '/junarakenne.html'
+            //<a href="Junarakenne.html">Junarakenne.html</a>
         }
         let hist = document.getElementById("historia");
-        hist.addEventListener("click",  ()=> {
+        hist.addEventListener("click", () => {
             var historylist = JSON.parse(localStorage.getItem("junatiedot"))
             var temp = "";
             if (historylist.length > 0) {
-                    historylist.forEach((t)=> {
-                        temp += "<tr>";
-                        temp += "<td>" + t.trainNumber + "</td>";
-                        temp += "<td>" + t.departureDate + "</td>";
-                        temp += "<td>" + t.trainType + "</td>";
-                        temp += "<td>"+ t.sceduledTime+"</td></tr>";
-                    })
+                historylist.forEach((t) => {
+                    temp += "<tr>";
+                    temp += "<td>" + t.trainNumber + "</td>";
+                    temp += "<td>" + t.departureDate + "</td>";
+                    temp += "<td>" + t.trainType + "</td></tr>";
+                })
             }
             document.getElementById('tdata').innerHTML = temp;
         })
@@ -102,5 +133,6 @@
     </script>
 
 </body>
+
 
 </html>

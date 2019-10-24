@@ -23,6 +23,11 @@ nyt.addHours(3);
 $("#aika").val(nyt.toISOString().slice(0, -8));
 }
 
+// Virhekäsittely (yritys)
+//window.onerror = function () {
+//    alert("Ooops, something went wrong... Go ahead and try again!");
+//};
+
 //Määritetään URL osoite, josta dataa haetaan kaupunkivalinnan perusteella
 function maaritaUrl() {
 
@@ -124,11 +129,11 @@ function haettu(data) {
     console.dir(data);
     tallenna(data);
     let rivit = "";
-    var otsikko = "<table><th>Mistä</th><th>Lähtöaika</th><th>Minne</th><th>Saapumisaika</th><th>Junan tiedot</th></table>";
+    var otsikko = "<tr><th>Mistä</th><th>Lähtöaika</th><th>Minne</th><th>Saapumisaika</th><th>Junan tiedot</th><th></th></tr>";
+
 
     for (let juna of data) {
 
-        //var lahtoaika = new Date(juna.timeTableRows[0].scheduledTime).toLocaleTimeString("fi", optiot);
         var lahtoaika = new Date(getLahtoaika(juna.timeTableRows, urllahtopaikka)).toLocaleTimeString("fi", optiot);
         var saapumisaika = new Date(getSaapumisaika(juna.timeTableRows, urlsaapumispaikka)).toLocaleTimeString("fi", optiot);
         var lahtoasema = $("#lahtopaikka").val();
@@ -153,8 +158,7 @@ function haettu(data) {
                 break;
             }
         }
-    
-        rivit += `<table><tr><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td></tr></table><table><tr><td>Väliasemat:</td><td colspan="4">${valiasemat}</td></tr></table>`;
+        rivit += `<tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td><td><i class="fa fa-plus" aria-hidden="true"></i>+</td></tr><tr id="group-of-rows-1" class="collapse"><td>Väliasemat:</td><td colspan="4">${valiasemat}</td></tr>`;
     }
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
 }

@@ -1,46 +1,117 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <script src="Scripts/jquery-3.4.1.js"></script>
     <script src="junakoodi.js"></script>
     <link href="junastyle.css" rel="stylesheet" />
     <title>Juna-aikataulut</title>
+
+    <title>Juna-aikataulujen haku</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Cantata+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Imprima" rel="stylesheet">
+
 </head>
+
 <body onload="init()">
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-cta">
+                        <h1>Hae junien aikatauluja</h1>
+                    </div>
+                    <div class="booking-form">
+                        <form>
+                        
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Mistä</span>
+                                    <select class="form-control" name="lahtopaikka" id="lahtopaikka">
+                                        <option>Valitse kaupunki</option>
+                                        <option>Helsinki</option>
+                                        <option>Oulu</option>
+                                        <option>Tampere</option>
+                                        <option>Turku</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Minne</span>
+                                    <select class="form-control" name="saapumispaikka" id="saapumispaikka">
+                                        <option>Valitse kaupunki</option>
+                                        <option>Helsinki</option>
+                                        <option>Oulu</option>
+                                        <option>Tampere</option>
+                                        <option>Turku</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Lähtöaika</span>
+                                    <input class="form-control" id="aika" type="datetime-local" required>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="form-label">Saapumisaika</span>
+                                    <input class="form-control" type="date" required>
+                                </div>
+                            </div>-->
+                            <!--<div class="col-md-6">
+                                <div class="form-btn">
+                                    <button iclass="submit-btn" input type="button" id="hae1" onclick="maaritaUrl()">Hae lähtöajalla</button>
+                                </div>
+                            </div>-->
+                            <div class="col-md-6">
+                                <div class="form-btn">
+                                    <button class="submit-btn" input type="button" id="hae1" onclick="haeLahtoAika()">Hae lähtöajan mukaan</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-btn">
+                                    <button class="submit-btn1" input type="button" id="hae3" onclick="window.location.href='/GooglenKartta.html'">Näytä reitti lähimmälle pysäkille</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-btn">
+                                    <button class="submit-btn1" input type="button" id="hae2" onclick="maaritaUrl()">Hae kaikki aikataulut</button>
+                                </div>
+                            </div>
 
-    <h1>Juna-aikataulut</h1>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    Mistä:
-    <select name="lahtopaikka" id="lahtopaikka">
-        <option value=""> -- valitse kaupunki -- </option>
-        <option value="Helsinki">Helsinki</option>
-        <option value="Oulu">Oulu</option>
-        <option value="Tampere">Tampere</option>
-        <option value="Turku">Turku</option>
 
-    </select>
+    <div class="container" id="taulukko">
+        <table id="tiedot" class="table">
+            <tbody id="tiedot">
+                <tr>
+                    <td><i></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    Minne:
-    <select name="saapumispaikka" id="saapumispaikka">
-        <option value=""> -- valitse kaupunki -- </option>
-        <option value="Helsinki">Helsinki</option>
-        <option value="Oulu">Oulu</option>
-        <option value="Tampere">Tampere</option>
-        <option value="Turku">Turku</option>
+  
 
-    </select>
-    <p><input type="button" value="Hae kaikki aikataulut" id="hae" onclick="maaritaUrl()" /> </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
-    <p>
-        Lähtöaika: <input type="datetime-local" id="aika" />
-    </p>
-
-    <p><input type="button" value="Hae aikataulut ajan mukaan" id="hae" onclick="haeLahtoAika()" /> </p>
-
-    <h3>Tiedot</h3>
-    <table id="tiedot">
-    </table>
-
-</body>
 </html>
