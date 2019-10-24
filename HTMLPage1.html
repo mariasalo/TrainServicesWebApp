@@ -95,7 +95,7 @@
         });
         function myFunction() {
             setInterval(function () { alert("Loading Junfo sivu..."); }, 2000);
-            window.location.href = ' http://localhost:50571/Junarakenne.html'
+            window.location.href = 'http://localhost:49883/Junarakenne.html'
         }
         let hist = document.getElementById("historia");
         hist.addEventListener("click",  ()=> {
@@ -110,38 +110,11 @@
                         temp += "<td>"+ t.sceduledTime+"</td></tr>";
                     })
 
-
-
-
-
-
-            //var output = '';
-            //for (var i = 0; i < junatiedot.length; i++) {
-            //    ouput += "<td>" + junatiedot[i].trainNumber + "</td>";
-                //"<td>" + junatiedot[i].departureDate + "</td>";+
-                // "<td>" + junatiedot[i].trainType + "</td>";+
-                // "<td>"+ junatiedot[i].sceduledTime+"</td></tr>";
-
             }
             document.getElementById('tdata').innerHTML = temp;
 
-                    //document.getElementById("tdata").innerHTML = localStorage.getItem("junatiedot");
-             }
-
-                //function getTrains(data) {
-                //    if (data.length > 0) {
-                //        var temp = "";
-                //        data.forEach((t)=> {
-                //            temp += "<tr>";
-                //            temp += "<td>" + t.trainNumber + "</td>";
-                //            temp += "<td>" + t.departureDate + "</td>";
-                //            temp += "<td>" + t.trainType + "</td>";
-                //            temp += "<td>"+ t.sceduledTime+"</td></tr>";
-                //        })
-                //        document.getElementById("tdata").innerHTML =
-                //            localStorage.getItem("junatiedot");
-                //    }
-                //}
+        })
+          
     </script>
 
 </body>
