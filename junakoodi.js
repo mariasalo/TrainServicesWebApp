@@ -1,4 +1,4 @@
-var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
+﻿var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
 var urllahtopaikka = "";
 var urlsaapumispaikka = "";
 var urlloppu = "";
@@ -6,11 +6,11 @@ var lahtokaupunki = "";
 var tulokaupunki = "";
 var valittupaatekaupunki = "";
 
-
 //määritellään ajan esitysmuoto
 var nyt = new Date();
 var asemat = [];
 
+//Ajan default arvon lisääminen:
 Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
@@ -119,7 +119,6 @@ function haeAsemanTiedot(asemanlyhenne) {
 }
 
 //järjestää haetun datan halutulla tavalla:
-
 function haettu(data) {
     console.dir(data);
     tallenna(data);
@@ -164,6 +163,10 @@ function haettu(data) {
     }
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
 
+
+    }
+    document.getElementById("tiedot").innerHTML = otsikko + rivit;
+
 }
 
 //hakee kaiken datan:
@@ -179,7 +182,7 @@ function tallenna(data) {
 
 }
 
-
+//Tallentaa haun tiedot localStorageen
 function tallenna(data) {
    
     localStorage.setItem("junatiedot", JSON.stringify(data));
@@ -204,50 +207,3 @@ function showPosition(position) {
         "<br>Longitude: " + position.coords.longitude;
 }
 
-
-//HYLÄTYT VERSIOT:
-
-//HAKUA AJAN PERUSTEELLA, LÄHTÖ JA SAAPUMISAIKA
-//var ajanvalinta = $('input[name=aika]:checked').val();
-
-//function aikaHaku() {
-//    if (ajanvalinta = "A") {
-//        haeLahtoAika();
-//    }
-//    else if (ajanvalinta = "B") {
-//        haeSaapumisAika();
-//        console.log("haku toimii!!!")
-//    }
-//}
-
-
-//TONIN VERSIO: haetaan juna-aikataulu lähtö- tai saapumisajan perusteella
-//function haedataAika() {
-//    $("#tiedot").empty();
-//    var alkuaika = new Date($("#lahtoaika").val());
-//    console.dir(alkuaika);
-//    console.log(alkuaika.toISOString());
-//    var loppuaika = new Date($("#saapumisaika").val());
-//    console.dir(loppuaika);
-//    var startfilter = "startDate=" + alkuaika.toISOString();
-//    //var endfilter = "endDate=" + loppuaika.toISOString();
-//    //var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
-//    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter;
-//    $.getJSON(url, haettu)
-//}
-
-// HAETAAN VAIN SAAPUMISAJAN PERUSTEELLA:
-//function haeSaapumisAika() {
-//    $("#tiedot").empty();
-//    var loppuaika = new Date($("#aika").val());
-//    console.dir(loppuaika);
-//    console.log("ei toimi?");
-//    var endfilter = "endDate=" + loppuaika.toISOString();
-//    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
-//    $.getJSON(url, haettu)
-//}
-
-//Date.prototype.addDate = function (d) {
-//    this.setDate(this.getDate() + (d));
-//    return this;
-//}
