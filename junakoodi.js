@@ -1,4 +1,6 @@
-﻿var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
+﻿// Tekijät: Katri Nousiainen, Maria Salo
+
+var urlalku = "https://rata.digitraffic.fi/api/v1/live-trains/station/";
 var urllahtopaikka = "";
 var urlsaapumispaikka = "";
 var urlloppu = "";
@@ -7,17 +9,17 @@ var tulokaupunki = "";
 var valittupaatekaupunki = "";
 
 
-//määritellään ajan esitysmuoto
+// Määritellään ajan esitysmuoto
 var nyt = new Date();
 var asemat = [];
 
-//Ajan default arvon lisääminen:
+// Ajan default arvon lisääminen:
 Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
 }
 
-//Määritetään urlin osia lähtö- ja saapumiskaupungin perusteella
+// Määritetään urlin osia lähtö- ja saapumiskaupungin perusteella
 function init() {
 nyt.addHours(3);
 $("#aika").val(nyt.toISOString().slice(0, -8));
@@ -76,7 +78,7 @@ haedata();
 
 var optiot = { hour: '2-digit', minute: '2-digit', hour12: false };
 
-// haetaan data lähtöajan mukaan:
+// Haetaan data lähtöajan mukaan:
 function haeLahtoAika() {
     maaritaUrl();
     $("#tiedot").empty();
@@ -88,7 +90,7 @@ function haeLahtoAika() {
     $.getJSON(url, haettu)
 }
 
-//haetaan junan saapumisaika asemalle
+// Haetaan junan saapumisaika asemalle
 function getSaapumisaika(timeTableRows, asema) {
     var sr=timeTableRows.find(function (tr) {
         return tr.stationShortCode == asema;
@@ -97,7 +99,7 @@ function getSaapumisaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
-//haetaan junan lähtöaika asemalta
+// Haetaan junan lähtöaika asemalta
 function getLahtoaika(timeTableRows, asema) {
     var sr = timeTableRows.find(function (tr) {
         return tr.stationShortCode == asema;
@@ -106,7 +108,7 @@ function getLahtoaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
-//Hakee kaikkien asemien tiedot eri API:sta, ja tallettaa ne asemat-arrayhyn(määritelty globaaliksi muuttujaksi ylhäällä)
+// Hakee kaikkien asemien tiedot eri API:sta, ja tallettaa ne asemat-arrayhyn(määritelty globaaliksi muuttujaksi ylhäällä)
 function haeAsemienTiedot() {
    
     var url = "https://rata.digitraffic.fi/api/v1/metadata/stations";
@@ -116,7 +118,7 @@ function haeAsemienTiedot() {
 }
 haeAsemienTiedot();
 
-//Hakee yksittäisen aseman shortcoden ja kiinnittää sen arvon asemanlyhenne-parametriin. Funktio palauttaa asemanlyhennettä vastaavan aseman nimen.
+// Hakee yksittäisen aseman shortcoden ja kiinnittää sen arvon asemanlyhenne-parametriin. Funktio palauttaa asemanlyhennettä vastaavan aseman nimen.
 function haeAsemanTiedot(asemanlyhenne) {
     var asema = asemat.find(function (asema) {
         return asema.stationShortCode==asemanlyhenne
@@ -124,7 +126,7 @@ function haeAsemanTiedot(asemanlyhenne) {
     return asema.stationName;
 }
 
-//järjestää haetun datan halutulla tavalla:
+// Järjestää haetun datan halutulla tavalla:
 function haettu(data) {
     console.dir(data);
     tallenna(data);
@@ -163,30 +165,15 @@ function haettu(data) {
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
 }
 
-//hakee kaiken datan:
+// Hakee kaiken datan:
 function haedata() {
     var url = urlalku + urlloppu;
     $.getJSON(url, haettu)
 }
 
-//Tallentaa haun tiedot localStorageen
+// Tallentaa haun tiedot localStorageen
 function tallenna(data) {
     localStorage.setItem("junatiedot", JSON.stringify(data));
 
 }
 
-//sijaintihommat VAROVASTI
-var x = document.getElementById("demo");
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-}
