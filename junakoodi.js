@@ -109,6 +109,8 @@ function getSaapumisaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
+<<<<<<< HEAD
+=======
 //haetaan junan lähtöaika asemalta
 function getLahtoaika(timeTableRows, asema) {
     var sr = timeTableRows.find(function (tr) {
@@ -195,12 +197,20 @@ function haedata() {
     $.getJSON(url, haettu)
 }
 
+<<<<<<< HEAD
+
+
+
+
+=======
 //Tallentaa haun tiedot localStorageen
+>>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
 function tallenna(data) {
     localStorage.setItem("junatiedot", JSON.stringify(data));
 
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -214,6 +224,27 @@ function tallenna(data) {
 
 //  
 =======
+=======
+//sijaintihommat VAROVASTI
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
+
+=======
+>>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
+>>>>>>> f97821dcbbd03686e5c4b82a969c9f008f937d4e
 //HYLÄTYT VERSIOT:
 
 //HAKUA AJAN PERUSTEELLA, LÄHTÖ JA SAAPUMISAIKA
@@ -255,6 +286,9 @@ function tallenna(data) {
 //    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
 //    $.getJSON(url, haettu)
 //}
+<<<<<<< HEAD
+//239a479a6aa7dabc5cff3380aee778e50b32692f
+=======
 
 //Date.prototype.addDate = function (d) {
 //    this.setDate(this.getDate() + (d));
