@@ -44,12 +44,6 @@ function getSaapumisaika(timeTableRows, asema) {
     return sr.scheduledTime;
 }
 
- HEAD
-
-
-
-//239a479a6aa7dabc5cff3380aee778e50b32692f
-//järjestää haetun datan:
 function haettu(data) {
     console.dir(data);
     tallenna(data);
@@ -75,12 +69,28 @@ function haedata() {
 
 
 
-HEAD
+
 function tallenna(data) {
     localStorage.setItem("junatiedot", JSON.stringify(data));
 
 }
 
+//sijaintihommat VAROVASTI
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
 
 //HYLÄTYT VERSIOT:
 
