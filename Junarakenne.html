@@ -13,21 +13,37 @@
 
     Mistä:
     <select name="lahtopaikka" id="lahtopaikka">
-        <option value="A">Helsinki</option>
+        <option value=""> -- valitse kaupunki -- </option>
+        <option value="Helsinki">Helsinki</option>
+        <option value="Oulu">Oulu</option>
+        <option value="Tampere">Tampere</option>
+        <option value="Turku">Turku</option>
+
     </select>
 
     Minne:
     <select name="saapumispaikka" id="saapumispaikka">
-        <option value="A">Tampere</option>
-    </select>
-    <p><input type="button" value="Hae kaikki aikataulut" id="hae" onclick="haedata()" /> </p>
+        <option value=""> -- valitse kaupunki -- </option>
+        <option value="Helsinki">Helsinki</option>
+        <option value="Oulu">Oulu</option>
+        <option value="Tampere">Tampere</option>
+        <option value="Turku">Turku</option>
 
+<<<<<<< HEAD
 
 
     <p>
         Lähtöaika: <input type="datetime-local" id="aika" />
     </p>
 
+=======
+    </select>
+    <p><input type="button" value="Hae kaikki aikataulut" id="hae" onclick="maaritaUrl()" /> </p>
+
+    <p>
+        Lähtöaika: <input type="datetime-local" id="aika" />
+    </p>
+>>>>>>> ed9d1fe5be2ce8c8fa5016e1ed74249c58a0d1fc
 
     <p><input type="button" value="Hae aikataulut ajan mukaan" id="hae" onclick="haeLahtoAika()" /> </p>
 
@@ -38,9 +54,5 @@
     <table id="tiedot">
     </table>
 
-
-
-    <!--<input type="radio" name="aika" value="A">Lähtöaika
-        <input type="radio" name="aika" value="B" />Saapumisaika<br />-->
 </body>
 </html>
