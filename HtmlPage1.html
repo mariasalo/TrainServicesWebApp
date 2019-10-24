@@ -1,0 +1,106 @@
+﻿<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <title></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="junakoodi.js"></script>
+    <style>
+        h1 {
+            background-image: url("https://d1p2xdir0176pq.cloudfront.net/wp-content/uploads/alpha-trains-750x450.jpg")
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--<div class="panel text centre">-->
+    <h1> Junfo</h1>
+    <h2> Sign In</h2>
+
+
+    <div class="main">
+        <input id="un" type="text" align="left" placeholder="Username">
+        <input id="pass" type="password" align="left" placeholder="Password">
+        <br />
+
+        <div id="msg" type="text-box" align="left" placeholder="Message">
+
+            <br />
+            <input type="button" id="signinbtn" value="SignIn" />
+
+            <br />
+
+
+            <input type="button" id="historia" value="View Browsing History" />
+            <div id="historialista">
+                <table class="table table-stripped" id="train-info">
+
+                    <thead>
+                        <tr>
+                            <th>Train Number</th>
+                            <th>Departure Date</th>
+                            <th>Train Type</th>
+                            <th>Scheduled Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tdata">
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        let txtuser = document.getElementById("un");
+        let txtpass = document.getElementById("pass");
+        let submit = document.getElementById("signinbtn");
+        let message = document.getElementById("msg");
+        let user;
+        let pass;
+        if (window.localStorage) {
+            localStorage.setItem("user", "daily")
+            localStorage.setItem("pass", "@123")
+            user = localStorage.getItem("user");
+            pass = localStorage.getItem("pass");
+        }
+        submit.addEventListener("click", () => {
+            console.log("sign")
+            if (user == txtuser.value && pass == txtpass.value) {
+                message.innerHTML = "Login Successful";
+                myFunction();
+            } else {
+                message.innerHTML = "Username or Password is Invalid";
+            }
+        });
+        function myFunction() {
+            setInterval(function () { alert("Loading Junfo sivu..."); }, 2000);
+            window.location.href = 'http://localhost:49883/Junarakenne.html'
+        }
+        let hist = document.getElementById("historia");
+        hist.addEventListener("click",  ()=> {
+            var historylist = JSON.parse(localStorage.getItem("junatiedot"))
+            var temp = "";
+            if (historylist.length > 0) {
+                    historylist.forEach((t)=> {
+                        temp += "<tr>";
+                        temp += "<td>" + t.trainNumber + "</td>";
+                        temp += "<td>" + t.departureDate + "</td>";
+                        temp += "<td>" + t.trainType + "</td>";
+                        temp += "<td>"+ t.sceduledTime+"</td></tr>";
+                    })
+            }
+            document.getElementById('tdata').innerHTML = temp;
+        })
+
+    </script>
+
+</body>
+
+</html>

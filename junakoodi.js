@@ -171,49 +171,18 @@ function tallenna(data) {
 
 }
 
-//HYLÄTYT VERSIOT:
+//sijaintihommat VAROVASTI
+var x = document.getElementById("demo");
 
-//HAKUA AJAN PERUSTEELLA, LÄHTÖ JA SAAPUMISAIKA
-//var ajanvalinta = $('input[name=aika]:checked').val();
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
 
-//function aikaHaku() {
-//    if (ajanvalinta = "A") {
-//        haeLahtoAika();
-//    }
-//    else if (ajanvalinta = "B") {
-//        haeSaapumisAika();
-//        console.log("haku toimii!!!")
-//    }
-//}
-
-
-//TONIN VERSIO: haetaan juna-aikataulu lähtö- tai saapumisajan perusteella
-//function haedataAika() {
-//    $("#tiedot").empty();
-//    var alkuaika = new Date($("#lahtoaika").val());
-//    console.dir(alkuaika);
-//    console.log(alkuaika.toISOString());
-//    var loppuaika = new Date($("#saapumisaika").val());
-//    console.dir(loppuaika);
-//    var startfilter = "startDate=" + alkuaika.toISOString();
-//    //var endfilter = "endDate=" + loppuaika.toISOString();
-//    //var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
-//    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter;
-//    $.getJSON(url, haettu)
-//}
-
-// HAETAAN VAIN SAAPUMISAJAN PERUSTEELLA:
-//function haeSaapumisAika() {
-//    $("#tiedot").empty();
-//    var loppuaika = new Date($("#aika").val());
-//    console.dir(loppuaika);
-//    console.log("ei toimi?");
-//    var endfilter = "endDate=" + loppuaika.toISOString();
-//    var url = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/TPE" + "?" + startfilter + "&" + endfilter;
-//    $.getJSON(url, haettu)
-//}
-
-//Date.prototype.addDate = function (d) {
-//    this.setDate(this.getDate() + (d));
-//    return this;
-//}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
