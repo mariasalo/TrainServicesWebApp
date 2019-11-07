@@ -3,8 +3,8 @@
 <html>
 
 <head>
-    <link href="Junatweb.css" rel="stylesheet" />
-    <title>Bootstrap Example</title>
+    <link href="kirjautumissivu.css" rel="stylesheet" />
+    <title>JustRail login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -20,11 +20,9 @@
             background-image: url("https://d1p2xdir0176pq.cloudfront.net/wp-content/uploads/alpha-trains-750x450.jpg")
         }
 
-
         h2 {
             background-image: url("https://d1p2xdir0176pq.cloudfront.net/wp-content/uploads/alpha-trains-750x450.jpg")
         }
-
 
         bg-image {
         }
@@ -58,9 +56,6 @@
                                     </div>
                                     <div id="msg" type="text-box" align="left" placeholder="Message">
                                     </div>
-
-
-
 
                                     <button class="btn btn-lg btn-primary" id="signinbtn" type="button">Kirjaudu</button>
 
@@ -115,8 +110,7 @@
         function myFunction() {
             console.log("myF");
             setInterval(function () { alert("Loading Junfo sivu..."); }, 2000);
-            window.location.href = '/junarakenne.html'
-            //<a href="Junarakenne.html">Junarakenne.html</a>
+            window.location.href = '/hakusivu.html'
         }
         let hist = document.getElementById("historia");
         hist.addEventListener("click", () => {
@@ -132,10 +126,6 @@
             }
             document.getElementById('tdata').innerHTML = temp;
         })
-
     </script>
-
 </body>
-
-
 </html>

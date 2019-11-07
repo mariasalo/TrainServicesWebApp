@@ -16,10 +16,23 @@
     background-position: center;
 }
 
-/*body {
-    background-image: url('');
-    background-size: 2000px;
-}*/
+#signinbtn {
+    background: #75B1DA;
+    border-color: #75B1DA;
+}
+
+#historia {
+    background: #75B1DA;
+    border-color: #75B1DA;
+}
+
+#historialista {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    font-size: 2em;
+}
 
 .login-heading {
     font-weight: 300;
@@ -53,7 +66,7 @@
         margin-bottom: 0;
         /* Override default `<label>` margin */
         line-height: 0;
-        color: #495057;
+        color: #75B1DA;
         cursor: text;
         /* Match the input under the label */
         border: 1px solid transparent;
@@ -92,18 +105,7 @@
             font-size: 12px;
             color: #777;
         }
-/* Fallback for Edge
--------------------------------------------------- */
-/*@supports (-ms-ime-align: auto) {
-    .form-label-group > label {
-        display: none;
-    }
-    .form-label-group input::-ms-input-placeholder {
-        color: #777;
-    }
-}*/
-/* Fallback for IE
--------------------------------------------------- */
+
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .form-label-group > label {
         display: none;

@@ -131,7 +131,7 @@ function haettu(data) {
     console.dir(data);
     tallenna(data);
     let rivit = "";
-    var otsikko = "<tr><th>Mistä</th><th>Lähtöaika</th><th>Minne</th><th>Saapumisaika</th><th>Junan tiedot</th><th></th></tr>";
+    var otsikko = "<tr><th>Mistä</th><th>Lähtöaika</th><th>Minne</th><th>Saapumisaika</th><th>Junan tiedot</th><th>Lisätietoja</th></tr>";
 
 
     for (let juna of data) {
@@ -160,7 +160,11 @@ function haettu(data) {
                 break;
             }
         }
-        rivit += `<tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td><td><i class="fa fa-plus" aria-hidden="true"></i>+</td></tr><tr id="group-of-rows-1" class="collapse"><td>Väliasemat:</td><td colspan="4">${valiasemat}</td></tr>`;
+        rivit += `<tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td><td><i class="fa fa-plus" style="font-size:36px"></i>+</td></tr><tr><td><span id = "group-of-rows-1" class = "collapse">Väliasemat:</span></td><td colspan = "5"><span id="group-of-rows-1" class="collapse">${valiasemat}</span></td></tr>`;
+
+
+
+        //rivit += `<tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1"><td>${lahtoasema}</td><td>${lahtoaika}</td><td>${paateasema}</td><td>${saapumisaika}</td><td>${juna.trainType + juna.trainNumber}</td><td><i class="fa fa-plus" aria-hidden="true"></i>+</td></tr><tr id="group-of-rows-1" class="collapse"><td>Väliasemat:</td><td colspan="4">${valiasemat}</td></tr>`;
     }
     document.getElementById("tiedot").innerHTML = otsikko + rivit;
 }
